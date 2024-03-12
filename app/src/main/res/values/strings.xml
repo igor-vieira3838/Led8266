@@ -5,4 +5,10 @@
     <string name="Login">LOGIN</string>
     <string name="Register">Register</string>
     <string name="Signup">Signup</string>
+    <string name="novo_usuario_qm">novo usuário?</string>
+    <string name="senha">Senha</string>
+    <string name="teste">teste\n</string>
+    <string name="MySQL">MySQL</string>
+    <string name="GetID">GetID</string>
+    <string name="showId">showId</string>
 </resources>

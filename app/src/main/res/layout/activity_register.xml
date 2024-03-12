@@ -74,4 +74,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/novasenha" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/testeButton"
+        android:layout_width="143dp"
+        android:layout_height="71dp"
+        android:layout_margin="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/design_default_color_secondary"
+        android:text="@string/MySQL"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/novasenha" />
+
+    <EditText
+        android:id="@+id/testebox"
+        android:layout_width="341dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_background"
+        android:hint="MySQL/..."
+        android:padding="20dp"
+        android:textColor="@color/design_default_color_secondary"
+        android:textColorHint="@color/design_default_color_secondary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/novasenha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testeButton"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

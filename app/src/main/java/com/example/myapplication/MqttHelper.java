@@ -21,7 +21,7 @@ import java.io.UnsupportedEncodingException;
 public class MqttHelper {
     private MqttAndroidClient mqttAndroidClient;
     final private String serverUri = "tcp://192.168.137.1:1883";
-    final public String clientId = MqttClient.generateClientId();
+    public String clientId = "tempId";
     private String activity;
 
     public MqttHelper(Context context) {
@@ -79,7 +79,7 @@ public class MqttHelper {
                     disconnectedBufferOptions.setPersistBuffer(false);
                     disconnectedBufferOptions.setDeleteOldestMessages(false);
                     mqttAndroidClient.setBufferOpts(disconnectedBufferOptions);
-                    subscribeToTopic("MeuNovoApp/"+clientId+"/#");
+                    subscribeToTopic("Led8266/#");
                 }
 
                 @Override
@@ -102,7 +102,7 @@ public class MqttHelper {
                 public void onSuccess(IMqttToken asyncActionToken) {
                     Log.w("Mqtt", "Subscribed!");
                     if (activity.equals("MainActivity")) {
-                        publish("Conectado ao tópico!", topic.replaceAll("#", activity+"/ConnectionStatus"));
+                        publish("Conectado ao tópico!", topic.replaceAll("#", activity + "/ConnectionStatus"));
                     }
                 }
 
@@ -131,7 +131,20 @@ public class MqttHelper {
         }
     }
 
-    public String getClientId(){
+    public String getClientId() {
         return clientId;
+    }
+
+    //função para receber a id retornada da API, caso o nome e senha fornecidos confiram na tela de login
+    public void newClientID(String[] loggedClientID) {
+        clientId = loggedClientID[0];
+    }
+
+    public String generateClientId (){
+        return MqttClient.generateClientId();
+    }
+
+    public String getServerUri(){
+        return "tcp://192.168.137.1:1883";
     }
 }
