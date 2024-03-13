@@ -11,4 +11,7 @@
     <string name="MySQL">MySQL</string>
     <string name="GetID">GetID</string>
     <string name="showId">showId</string>
+    <string name="OFF">OFF</string>
+    <string name="ON">ON</string>
+    <string name="esp8266">Esp8266</string>
 </resources>

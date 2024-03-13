@@ -72,9 +72,14 @@ public class Login extends AppCompatActivity {
                     try {
                         Log.w("Debug", mqttMessage.toString());
                         String[] loggedClientID = mqttMessage.toString().split("/");
+                        mqttHelper.clientId = loggedClientID[0];
+
+                        Intent intent = new Intent(Login.this, Led8266.class);
+                        intent.putExtra("clientId", loggedClientID[0]);
+                        startActivity(intent);
 
                         mqttAndroidClient = new MqttAndroidClient(getApplicationContext(), mqttHelper.getServerUri(), loggedClientID[0]);
-                        mqttHelper.publish(mqttHelper.clientId +"/"+ loggedClientID[0], "Led8266/MySQL/tempId/client.id");
+
                     } catch (Error e) {
                         Toast.makeText(Login.this, "Erro: " + e, Toast.LENGTH_SHORT).show();
                     }

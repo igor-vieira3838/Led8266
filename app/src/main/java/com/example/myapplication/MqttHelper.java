@@ -68,7 +68,6 @@ public class MqttHelper {
         mqttConnectOptions.setPassword("abc".toCharArray());
 
         try {
-
             mqttAndroidClient.connect(mqttConnectOptions, null, new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
@@ -87,8 +86,6 @@ public class MqttHelper {
                     Log.w("Mqtt", "Failed to connect to: " + serverUri + exception.toString());
                 }
             });
-
-
         } catch (MqttException ex) {
             ex.printStackTrace();
         }

@@ -13,6 +13,8 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
+import java.util.Arrays;
+
 public class Register extends AppCompatActivity {
 
     MqttHelper mqttHelper;
@@ -64,9 +66,14 @@ public class Register extends AppCompatActivity {
             // messageArrived é uma função que é chamada toda vez que o cliente MQTT recebe uma mensagem
             public void messageArrived(String topic, MqttMessage mqttMessage) throws Exception {
                 Log.w("Debug", mqttMessage.toString());
-                if(topic.equals("Led8266/MySQL/tempId/generate.user_id")){
+                if (topic.equals("Led8266/MySQL/tempId/generate.user_id")) {
+                    String[] payload = mqttMessage.toString().split("/");
                     String newClientId = mqttHelper.generateClientId();
-                    mqttHelper.publish(newClientId +"/ ", "Led8266/MySQL/tempId/finishSignup.user_info");
+                    mqttHelper.publish(newClientId + "/" + payload[0] + "/" + payload[1],
+                            "Led8266/MySQL/tempId/finishSignup.user_info");
+                }
+                if(topic.equals("Led8266/MySQL/tempId/generate.fail")){
+                    Toast.makeText(Register.this, "Register fail: name already taken", Toast.LENGTH_SHORT).show();
                 }
             }
 
